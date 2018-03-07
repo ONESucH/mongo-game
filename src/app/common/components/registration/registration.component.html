@@ -1,17 +1,17 @@
 <div class="app-registartion">
-  <div class="panel" #panel></div>
+  <div class="panel"></div>
   <div class="max-size-window">
     <div class="registartion-main">
       <h1>Регистрация</h1>
-      <form #form="ngForm" (ngSubmit)="registerUsers(form, panel);">
+      <form #form="ngForm" (ngSubmit)="registerUsers(form);">
         <label>Nikname
-          <input ngModel type="text" pattern="[A-Z]{1}[a-zA-Z0-9]{1,20}" placeholder="Nikname" name="nik_name" required>
+          <input ngModel type="text" pattern="[a-zA-Z0-9]{2,20}" placeholder="Nikname" name="nik_name" required>
         </label>
         <label>Your name
-          <input ngModel type="text" pattern="[A-Za-z]{1}[a-zA-Z0-9]{1,20}" placeholder="Vova" name="your_name" required>
+          <input ngModel type="text" pattern="[a-zA-Z0-9]{2,20}" placeholder="Vova" name="your_name" required>
         </label>
         <label>Email
-          <input ngModel type="email" pattern="[a-zA-Z0-9]{,15}[0-9]{,10}[@]{1}" placeholder="mail10@mail.ru" name="email" required>
+          <input ngModel type="email" placeholder="mail10@mail.ru" name="email" required>
         </label>
         <label>Password
           <input ngModel type="password" pattern="[A-Za-z]{1}[a-zA-Z0-9]{4,20}" placeholder="******" name="pass" required>

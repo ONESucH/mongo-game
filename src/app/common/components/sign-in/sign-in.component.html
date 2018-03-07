@@ -5,7 +5,7 @@
         <h1>Войдите в систему</h1>
         <form>
           <label>Login/Email<input type="text" placeholder="login" pattern="[a-zA-Z]{3,35}" required></label>
-          <label>Password<input type="password" required></label>
+          <label>Password<input type="password" placeholder="******" required></label>
           <button type="submit">Войти</button>
           <a [routerLink]="['/registration']">регистрация</a>
         </form>
