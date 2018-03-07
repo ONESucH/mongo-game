@@ -1,0 +1,102 @@
+@import '../../../../styles';
+
+.app-registartion {
+  position: relative;
+  width: 100vw;
+  min-height: 200vh;
+}
+
+.registartion-main {
+  transform-style: flat; // Дочерние элементы лежать в экране(не в 3d-модели)
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  background: rgba(0, 0, 0, 0.62);
+  text-align: center;
+  padding-top: 50px;
+  h1 {
+    font-family: @cursive;
+    font-size: 50px;
+    color: #fff;
+    text-shadow: 0 0 50px 2px #fff;
+    font-weight: 900;
+  }
+  p {
+    font-family: @cursive;
+    font-size: 50px;
+    color: #fff;
+    text-shadow: 0 0 50px 2px #fff;
+    font-weight: 900;
+  }
+  form {
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    margin: auto;
+    max-width: 180px;
+  }
+  form label {
+    display: block;
+    padding: 5px 0;
+    text-align: left;
+    color: #fff;
+  }
+  form input {
+    display: block;
+    border-radius: 4px;
+    padding: 5px;
+    margin-top: 5px;
+  }
+  form button {
+    cursor: pointer;
+    width: auto;
+    margin: 15px auto;
+    padding: 8px 15px;
+    border-radius: 30px;
+    border: 1px solid silver;
+    background: beige;
+    transition: .8s;
+    &:hover {
+      background: orange;
+    }
+  }
+  form a {
+    text-decoration: underline;
+    color: #00b6ff;
+    text-transform: uppercase;
+    font-size: 9px;
+  }
+}
+
+/* Панель уведомлений */
+.panel {
+  position: absolute;
+  right: 40px;
+  top: 40px;
+  width: 250px;
+  min-height: 50px;
+  display: none;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  z-index: 500;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.70);
+  color: #fff;
+  transition: .8s;
+  opacity: .8;
+  box-shadow: 0 0 5px 1px #fff;
+  &:hover {
+    text-shadow: 0 0 10px #fff;
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.90);
+    box-shadow: 0 0 30px 1px #fff;
+  }
+}
+
+.panel-show {
+  display: flex;
+}
+/* ----------------------------- */

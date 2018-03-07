@@ -1,0 +1,43 @@
+/*
+  Fonts
+  Created on : 29.01.2018
+  Author     : onesuch07@gmail.com
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: @cursive;
+}
+
+/* Шрифты */
+@cursive: 'Supermercado One', cursive;
+
+@font-face {
+  font-family: @cursive;
+  src: url('/assets/fonts/SupermercadoOne-Regular.eot');
+  src: url('/assets/fonts/SupermercadoOne-Regular.eot?#iefix') format('embedded-opentype'),
+  url('/assets/fonts/SupermercadoOne-Regular.woff') format('woff'),
+  url('/assets/fonts/SupermercadoOne-Regular.ttf') format('truetype'),
+  url('/assets/fonts/SupermercadoOne-Regular.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* ------------------------------------------------------------------------------------------ */
+
+.content {
+  display: block;
+  overflow: hidden;
+  perspective: 3000px;
+  perspective-origin: center;
+  background: url('/assets/img/conteng-background.jpg') no-repeat center;
+  background-size: cover;
+}
+
+.max-size-window {
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+  box-sizing: border-box;
+}
+/* --------------- */
