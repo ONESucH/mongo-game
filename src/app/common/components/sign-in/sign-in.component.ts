@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignInComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
   /* Проверяем на зарегистрированного пользователя */
   ngOnInit() {
