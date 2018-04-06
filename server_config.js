@@ -10,9 +10,9 @@ var mongoose = require('mongoose');
 
 mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost/mean-angular5', {promiseLibrary: require('bluebird')}).then(function () {
-  console.log('connection succesful'); // mongo true - node server_config.js
+  console.log('connection succesful');
 }).catch(function (err) {
-  console.error(err); // mongo error
+  console.error(err);
 });
 
 app.use(logger('dev'));

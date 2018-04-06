@@ -1,6 +1,5 @@
-import {Component, ViewEncapsulation, OnInit} from '@angular/core';
+import {Component, Injectable, ViewEncapsulation} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
 
 @Component({
   selector: 'app-registration',
@@ -10,24 +9,18 @@ import {Injectable} from '@angular/core';
 })
 
 @Injectable()
-export class RegistrationComponent implements OnInit {
+export class RegistrationComponent {
 
   registration: any;
 
-  constructor(private http: HttpClient) {}
-
-  ngOnInit() {
-    //this.http.get('/registration').subscribe(data => {
-    //  this.books = data;
-    //  console.log('%c ' + '----------->>>>>>>>>>>>', 'background:orange;border-radius:10px;color:#fff;text-shadow: 0 0 5px red;padding-right:5px;', this.books);
-    //});
+  constructor(private http: HttpClient) {
   }
 
   /* Регистрация */
   registerUsers(data) {
     /* окно уведомления */
     let content = document.querySelector('.app-registartion'),
-        message = document.createElement('div');
+      message = document.createElement('div');
 
     message.classList.add('message-window');
 
