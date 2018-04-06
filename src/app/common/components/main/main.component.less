@@ -1,0 +1,94 @@
+@import '../../../../styles';
+@import '../../../../mixins';
+
+/* Переменные */
+@speed: 10s; // скорость
+@duration: 4s; // задержка
+@showRegistration: @speed + @duration; // Появление окна входа после анимации
+@activeBlock: 350%; // 3d модель
+@BeforeAfter: 30em; // размер блоков
+@BorderSizeBeforeAfter: @BeforeAfter / @BeforeAfter; // размер блоков
+@speedBeforeAfter: @speed; // скорость
+/* Анимация при входе */
+.main {
+  .absolute;
+  overflow: hidden;
+  background: url('../../../../assets/img/conteng-background.jpg') no-repeat center;
+  background-size: cover;
+}
+
+.main-model {
+  .absolute;
+  background: rgba(0, 0, 0, 0.5);
+  background-size: cover;
+  font-family: @cursive;
+  z-index: 3;
+  perspective: 50vh; // <<<==========  сцена
+  perspective-origin: left center;
+}
+
+.active-box {
+  .absolute;
+  width: @activeBlock;
+  overflow: hidden;
+  transform-style: preserve-3d; // <<<<------------- 3d-model
+  border-top: @BorderSizeBeforeAfter solid lightseagreen;
+  border-bottom: @BorderSizeBeforeAfter solid lightseagreen;
+  animation: replace-model-3d @speed ease-in-out forwards; // не отматываем кадр
+  //animation: show-sign-in replace-model-3d @showRegistration ease forwards; // Ожидаем конец анимации
+  z-index: 4;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 0;
+    border-radius: 10px;
+    width: @BeforeAfter;
+    height: @BeforeAfter / @BeforeAfter - 0.01;
+    max-width: 100px;
+    background: #fff;
+    box-shadow: 0 0 10px 1px lightseagreen;
+    animation: borderAfterBefore @speedBeforeAfter ease-in infinite;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    border-radius: 10px;
+    width: @BeforeAfter;
+    height: @BeforeAfter / @BeforeAfter - 0.01;
+    max-width: 100px;
+    background: #fff;
+    box-shadow: 0 0 10px 1px lightseagreen;
+    animation: borderAfterBefore @speedBeforeAfter ease-in-out infinite;
+  }
+}
+
+@keyframes borderAfterBefore {
+  100% {
+    left: @activeBlock + @BeforeAfter;
+  }
+}
+
+@keyframes replace-model-3d {
+  0% { // rotateY(40deg) rotateX(-10deg)  translateZ(-100px);
+    transform: translateZ(1000px);
+  }
+  20% {
+    left: -100%;
+    transform: rotateY(-45deg);
+  }
+  100% {
+    left: -100%;
+    transform: rotateY(-45deg);
+  }
+}
+
+@keyframes show-sign-in {
+  100% {
+    opacity: 1;
+    color: #fff;
+  }
+}
+/* ------------------------------------------------------------------------ */

@@ -59,7 +59,7 @@ export class RegistrationComponent implements OnInit {
     } else {
 
       /* Запишем данные пользователя в LocalStorage */
-      this.http.post('/registration', data.value).subscribe(data => {
+      this.http.post('/registration', data.value).subscribe(() => {
 
         message.innerText = 'Вы зарегистировались'; // сообщение
 

@@ -1,15 +1,9 @@
-<div class="model-3D">
-  <div class="model-3D-sign-in">
-    <div class="active-box">
-      <div class="sign-in">
-        <h1>Войдите в систему</h1>
-        <form>
-          <label>Login/Email<input type="text" placeholder="login" pattern="[a-zA-Z]{3,35}" required></label>
-          <label>Password<input type="password" placeholder="******" required></label>
-          <button type="submit">Войти</button>
-          <a [routerLink]="['/registration']">регистрация</a>
-        </form>
-      </div>
-    </div>
-  </div>
+<div class="sign-in">
+  <h1>Войдите в систему</h1>
+  <form>
+    <label>Login/Email<input type="text" placeholder="login" pattern="[a-zA-Z]{3,35}" required></label>
+    <label>Password<input type="password" placeholder="******" required></label>
+    <button type="submit">Войти</button>
+    <a [routerLink]="['/registration']">регистрация</a>
+  </form>
 </div>
