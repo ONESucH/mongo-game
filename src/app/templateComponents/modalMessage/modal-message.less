@@ -1,0 +1,26 @@
+/* Панель уведомлений */
+.app-message {
+  position: fixed;
+  right: 15px;
+  top: 15px;
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  max-width: 350px;
+  min-width: 200px;
+  min-height: 25px;
+  z-index: 600;
+}
+
+.message-window {
+  background: radial-gradient(at top, rgba(36, 168, 218, 0.61), rgba(16, 0, 255, 0.05));
+  transition: 2s;
+  border-radius: 6px;
+  color: #fff;
+  text-shadow: 0 0 10px #3cdc8f;
+  font-size: 18px;
+  text-align: left;
+  padding: 15px 10px;
+  opacity: 1;
+  margin-bottom: 5px;
+}

@@ -1,10 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+
+import ModalMessage from '../../../templateComponents/modalMessage/modalMessage'; // Модальное окно
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.less']
+  styleUrls: ['./sign-in.component.less'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SignInComponent implements OnInit {
 
@@ -14,35 +17,28 @@ export class SignInComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   /* Проверяем на зарегистрированного пользователя */
-  ngOnInit() {
+  ngOnInit() {}
 
-  }
-
+  /* Вход в систему */
   signInFormData(signInData) {
     if (!signInData.valid) {
-      console.log('Форма не валидна');
+      ModalMessage.modal('Форма не валидна');
       return false;
     } else {
-      console.log('signInData.value', signInData.value);
-
       this.pass = signInData.value.pass;
       this.login = signInData.value.nik_name;
 
       this.http.get('/registration').subscribe((req) => {
-        // signInData.value.nik_name
-        // signInData.value.pass
-        console.log('req', req);
-        let seccessPass = this.pass.indexOf(req) !== -1;
-        let seccessLogin = this.login.indexOf(req) !== -1;
-        console.log('seccessPass', seccessPass);
-        console.log('seccessLogin', seccessLogin);
-
-
-        //console.log('user', user);
+        for (let key in req) {
+          if (req[key].pass === this.pass && req[key].nik_name === this.login) {
+            ModalMessage.modal('Вошли');
+          } else {
+            ModalMessage.modal('Не верные данные');
+          }
+        }
       });
 
-
-      signInData.reset(); // чисти форму
+      signInData.reset(); // чистим форму
     }
   }
 }

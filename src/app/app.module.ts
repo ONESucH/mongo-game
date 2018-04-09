@@ -12,7 +12,6 @@ import {RegistrationComponent} from './common/components/registration/registrati
 import {SignInComponent} from './common/components/sign-in/sign-in.component';
 import {NotFoundComponent} from './common/components/not-found/not-found.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

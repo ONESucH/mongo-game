@@ -1,5 +1,6 @@
 @import '../../../../styles';
 @import '../../../../mixins';
+@import './../../../templateComponents/modalMessage/modal-message';
 
 /* Переменные */
 @speed: 10s; // скорость
@@ -78,28 +79,6 @@
     font-size: 9px;
   }
 }
-
-/* Панель уведомлений */
-.message-window {
-  display: inline-block;
-  position: fixed;
-  max-width: 350px;
-  min-width: 200px;
-  min-height: 25px;
-  right: 15px;
-  top: 15px;
-  background: radial-gradient(at top, rgba(36, 168, 218, 0.61), rgba(16, 0, 255, 0.05));
-  transition: 2s;
-  border-radius: 6px;
-  color: #fff;
-  text-shadow: 0 0 10px #3cdc8f;
-  font-size: 18px;
-  text-align: left;
-  padding: 15px 10px;
-  z-index: 600;
-  opacity: 1;
-}
-/* --------------------- */
 
 /* Анимация при входе */
 .main {
