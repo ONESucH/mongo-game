@@ -21,6 +21,7 @@ export class SignInComponent implements OnInit {
 
   /* Вход в систему */
   signInFormData(signInData) {
+
     if (!signInData.valid) {
       ModalMessage.modal('Форма не валидна');
       return false;
@@ -32,6 +33,7 @@ export class SignInComponent implements OnInit {
         for (let key in req) {
           if (req[key].pass === this.pass && req[key].nik_name === this.login) {
             ModalMessage.modal('Вошли');
+            window.location.href = '/game-table';
           } else {
             ModalMessage.modal('Не верные данные');
           }

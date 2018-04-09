@@ -5,6 +5,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 
 var registration = require('./src/app/common/routes/registration');
+var gameTable = require('./src/app/common/routes/game-table');
 var app = express();
 var mongoose = require('mongoose');
 
@@ -19,8 +20,9 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended': 'false'}));
 app.use(express.static(path.join(__dirname, 'dist')));
-app.use('/registrations', express.static(path.join(__dirname, 'dist'))); // создаётся роутинг для компоненты
-app.use('/registration', registration); // url по которому будет доступен RestApi
+app.use(['/registrations', '/game-table'], express.static(path.join(__dirname, 'dist'))); // создаётся роутинг для компоненты
+app.use('/registration', registration);
+app.use('/game-table', gameTable);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
