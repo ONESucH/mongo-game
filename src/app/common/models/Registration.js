@@ -6,6 +6,11 @@ var RegistrationSchema = new mongoose.Schema({
   email: String,
   pass: String,
   confirm_pass: String,
+  coints: Number,
+  hero: String,
+  status: String,
+  lvl: Number,
+  top_position: Boolean,
   updated_date: { type: Date, default: Date.now }
 });
 

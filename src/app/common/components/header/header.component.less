@@ -8,21 +8,62 @@
   justify-content: space-between;
   z-index: 100;
   color: #fff;
+  padding: 20px;
   a {
     color: #fff;
     text-decoration: none;
   }
 }
 
+.logo {
+  i {
+    margin-right: 6px;
+  }
+}
+
+.news {
+  flex-grow: 1;
+  margin: 0 20px;
+}
+
 .user-data {
+  position: relative;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: space-around;
+  &:hover .list-data {
+    display: flex !important;
+  }
   div {
     margin: 0 5px;
   }
   div span {
-    margin-left: 5px;
+    margin-left: 6px;
+  }
+  i {
+    color: #f4d200;
+  }
+  ul span {
+    margin-left: 20px;
+  }
+}
+
+.list-data {
+  position: absolute;
+  right: 0;
+  top: calc(100%);
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  list-style: none;
+  li {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5px;
+    border: 1px solid black;
+    text-shadow: 0 0 5px #003487;
   }
 }

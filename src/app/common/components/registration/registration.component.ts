@@ -13,13 +13,12 @@ import ModalMessage from '../../../templateComponents/modalMessage/modalMessage'
 @Injectable()
 export class RegistrationComponent {
 
-  registration: any;
+  public registration: any;
 
   constructor(private http: HttpClient) {}
 
   /* Регистрация */
   registerUsers(data) {
-
     /* Проверяем на валидность форму */
     if (!data.valid) {
       /* Форма пуста или не валидна */
@@ -28,14 +27,19 @@ export class RegistrationComponent {
     } else if (data.value.pass !== data.value.confirm_pass) {
       ModalMessage.modal('Пароли не совпадают');
     } else {
-      /* Запишем данные пользователя в LocalStorage */
+      /* Дадим пользователю нулевое значение в очках и т.п. */
+      data.value.coints = 100; // деньги
+      data.value.hero = 'human'; // название героя "Человек"
+      data.value.status = 'user'; // статус игрока user, vip, admin, moderator
+      data.value.lvl = 0; // уровень
+      data.value.top_position = 'false'; // топ позицияd
       this.http.post('/registration', data.value).subscribe(() => {
         ModalMessage.modal('Вы зарегистировались');
+        window.location.href = '/';
       });
 
       /* Чистим форму регистрации */
       data.reset();
-
     }
   }
 
