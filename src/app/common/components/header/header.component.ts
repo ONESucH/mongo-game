@@ -8,23 +8,19 @@ import {Http} from '@angular/http';
 })
 export class HeaderComponent implements OnInit {
 
-  userArrData: any[];
+  public userArrData: object;
 
-  constructor(private http: Http) {
-  }
+  constructor(private http: Http) {}
 
   userData() {
     this.http.get('/registration')
       .subscribe((req) => {
         let json = req.json();
         this.userArrData = json[0];
-
-        console.log('this.userArrData', this.userArrData);
       });
   }
 
   ngOnInit() {
     this.userData();
-    console.log('Снаружи функции', this.userArrData);
   }
 }

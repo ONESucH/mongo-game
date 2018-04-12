@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var RegistrationSchema = new mongoose.Schema({
   nik_name: String,
   your_name: String,
-  email: String,
+  email: String | Number,
   pass: String,
   confirm_pass: String,
   coints: Number,

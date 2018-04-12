@@ -5,15 +5,15 @@
     </div>
     <div class="news">Новости/оповещения</div>
     <div class="user-data">
-      <div><i class="fa fa-money" aria-hidden="true"></i><span><span>{{userArrData.coints}}</span></span></div>
-      <div><span>{{userArrData.nik_name}}</span></div>
-      <ul class="list-data" *ngFor="let item of userArrData">
-        <li *ngIf="item.hero">Герой: <span>{{item.hero}}</span></li>
-        <li *ngIf="item.status">Статус: <span>{{item.status}}</span></li>
-        <li *ngIf="item.top_position">Ваша позиция в топе: <span>{{item.top_position}}</span></li>
-        <li *ngIf="item.lvl">Уровень: <span>{{item.lvl}}</span></li>
-        <li *ngIf="item.email">Email: <span>{{item.email}}</span></li>
-        <li *ngIf="item.updated_date">{{item.updated_date}}</li>
+      <div><i class="fa fa-money" aria-hidden="true"></i><span>{{userArrData?.coints}}</span></div>
+      <div>{{userArrData?.nik_name}}</div>
+      <ul class="list-data">
+        <li>Герой: <span>{{userArrData?.hero}}</span></li>
+        <li>Статус: <span>{{userArrData?.status}}</span></li>
+        <li *ngIf="userArrData?.top_position ? false : 'Вы не в топе'">Ваша позиция в топе: <span>{{userArrData?.top_position}}</span></li>
+        <li>Уровень: <span>{{userArrData?.lvl}}</span></li>
+        <li>Email: <span>{{userArrData?.email}}</span></li>
+        <li>{{userArrData?.updated_date}}</li>
       </ul>
     </div>
   </div>
