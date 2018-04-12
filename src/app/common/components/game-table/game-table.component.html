@@ -1,3 +1,31 @@
 <app-header></app-header>
-<div class="app-game-table"></div>
+<div class="app-game-table">
+  <div class="app-table">
+    <div class="games">
+      <div class="user">
+        <div class="data-user">
+          <img src="/assets/img/{{userArrData?.img}}" alt="user">
+          <p>Никнейм: {{userArrData?.nik_name}}</p>
+          <p>Уровень: {{userArrData?.lvl}}</p>
+          <p>Деньги: {{userArrData?.coints}}</p>
+          <p>Статус: {{userArrData?.status}}</p>
+          <p>Позиция в топе: {{userArrData?.top_position}}</p>
+        </div>
+      </div>
+      <div class="table-carousel-main">
+        <div class="carousel-block">
+          <ul class="carousel">
+            <li></li><li></li><li></li><li></li>
+            <li></li><li></li><li></li><li></li>
+          </ul>
+          <div class="carousel-bonus">Бонус</div>
+        </div>
+        <div class="carousel-result">
+          <span>5</span>
+        </div>
+      </div>
+    </div>
+    <div class="result">1-WIN</div>
+  </div>
+</div>
 <app-footer></app-footer>

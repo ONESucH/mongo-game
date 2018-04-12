@@ -1,16 +1,16 @@
 <div class="max-size-window">
   <div class="app-header">
     <div class="logo">
-      <a href="/"><i class="fa fa-spinner fa-pulse"></i>logo-name</a>
+      <a href="/"><i class="fa fa-spinner fa-pulse"></i>logo</a>
     </div>
-    <div class="news">Новости/оповещения</div>
+    <div class="news">{{getNew}}</div>
     <div class="user-data">
       <div><i class="fa fa-money" aria-hidden="true"></i><span>{{userArrData?.coints}}</span></div>
-      <div>{{userArrData?.nik_name}}</div>
+      <div class="name"><i class="fa fa-user-o" aria-hidden="true"></i><span>{{userArrData?.nik_name}}</span></div>
       <ul class="list-data">
         <li>Герой: <span>{{userArrData?.hero}}</span></li>
         <li>Статус: <span>{{userArrData?.status}}</span></li>
-        <li *ngIf="userArrData?.top_position ? false : 'Вы не в топе'">Ваша позиция в топе: <span>{{userArrData?.top_position}}</span></li>
+        <li>Позиция  в топе: <span>{{userArrData?.top_position}}</span></li>
         <li>Уровень: <span>{{userArrData?.lvl}}</span></li>
         <li>Email: <span>{{userArrData?.email}}</span></li>
         <li>{{userArrData?.updated_date}}</li>

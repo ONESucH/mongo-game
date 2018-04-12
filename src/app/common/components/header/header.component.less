@@ -9,6 +9,7 @@
   z-index: 100;
   color: #fff;
   padding: 20px;
+  max-height: 25px;
   a {
     color: #fff;
     text-decoration: none;
@@ -16,6 +17,7 @@
 }
 
 .logo {
+  white-space: nowrap;
   i {
     margin-right: 6px;
   }
@@ -24,6 +26,9 @@
 .news {
   flex-grow: 1;
   margin: 0 20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .user-data {
@@ -32,10 +37,13 @@
   flex-flow: row nowrap;
   align-items: center;
   justify-content: space-around;
+  cursor: pointer;
   &:hover .list-data {
     display: flex !important;
   }
   div {
+    white-space: nowrap;
+    text-transform: capitalize;
     margin: 0 5px;
   }
   div span {
@@ -53,7 +61,7 @@
   position: absolute;
   right: 0;
   top: calc(100%);
-  display: flex;
+  display: none;
   flex-flow: column;
   align-items: stretch;
   list-style: none;
@@ -63,7 +71,13 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 5px;
-    border: 1px solid black;
+    border: 1px solid #037df4;
     text-shadow: 0 0 5px #003487;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 1s;
+    &:hover {
+      box-shadow: 0 0 50px 1px #037df4;
+    }
   }
 }
