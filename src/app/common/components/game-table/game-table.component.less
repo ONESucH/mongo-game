@@ -49,6 +49,7 @@
     width: 110px;
     height: 110px;
     border: 1px solid silver;
+    border-radius: 6px;
   }
   p {
     width: 100%;
@@ -71,7 +72,6 @@
   align-items: stretch;
   justify-content: space-between;
   flex-grow: 1;
-  background: green;
 }
 
 .carousel {
@@ -79,15 +79,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   list-style: none;
   overflow: hidden;
   border-radius: 100%;
   margin: auto;
   border: 5px solid orange;
   &:hover {
-    animation: carousel 10s infinite ease-out; // быстро начинается - медленно заканичвается
+    animation: carousel 10s ease-out running; // быстро начинается - медленно заканичвается
   }
   &:before { // центральный круг
     content: '';
@@ -117,45 +117,54 @@
     z-index: 0;
   }
   li:after {
-    content: '1';
-    position: absolute;
-    top: 0;
+    counter-increment: section;
+    content: counter(section);
+    position: fixed;
+    left: 450%;
+    top: 30%;
+    transform: rotate(20deg);
+    text-shadow: 0 0 10px #fff;
   }
   li:nth-child(1) {
     transform: rotate(0deg);
-    z-index: 2;
   }
   li:nth-child(2) {
     transform: rotate(45deg);
-    z-index: 2;
-    top: -25%;
-    bottom: 10%;
-    left: 50%;
-    margin-left: 20%;
+    top: -45%;
+    bottom: 0;
+    left: 70%;
   }
   li:nth-child(3) {
     transform: rotate(90deg);
-    z-index: 2;
+    top: 0;
+    bottom: 0;
+    left: 25%;
+    margin-left: 50%;
   }
   li:nth-child(4) {
     transform: rotate(135deg);
-    z-index: 2;
+    top: 40%;
+    bottom: 0;
+    left: 70%;
   }
   li:nth-child(5) {
     transform: rotate(180deg);
-    z-index: 3;
+    top: 50%;
   }
   li:nth-child(6) {
     transform: rotate(225deg);
-    z-index: 3;
+    left: 30%;
+    top: 45%;
   }
   li:nth-child(7) {
     transform: rotate(270deg);
-    z-index: 3;
+    top: 25%;
+    left: 20%;
   }
   li:nth-child(8) {
     transform: rotate(315deg);
-    z-index: 3;
+    left: 30%;
+    top: 5%;
   }
 }
 
@@ -167,12 +176,27 @@
   padding: 20px 0;
 }
 
+.next-button button {
+  display: inline-block;
+  background: #00b6ff;
+  border: 1px solid black;
+  margin: auto;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-shadow: 0 0 5px #00d5ff;
+  transition: .8s;
+  outline: none;
+  &:hover {
+    background: #00faff;
+  }
+}
+
 .carousel-result {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-grow: 1;
-  background: green;
   span {
     position: relative;
     display: flex;
@@ -200,3 +224,4 @@
     transform: rotate(360deg);
   }
 }
+/* ------------------------- */
