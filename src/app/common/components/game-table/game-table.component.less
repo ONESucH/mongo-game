@@ -73,26 +73,47 @@
   flex-grow: 1;
 }
 
-.carousel {
+.ponter-carousel {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 250px;
   height: 250px;
   min-width: 250px;
   min-height: 250px;
   max-width: 250px;
   max-height: 250px;
-  list-style: none;
-  transition: 10s;
+  margin: auto;
+  border: 5px solid orange;
   overflow: hidden;
   border-radius: 100%;
+}
+
+.pointer {
+  position: absolute;
+  top: 45%;
+  right: 0;
+  left: 0;
+  bottom: 10%;
+  width: 5px;
+  background: red;
+  border-radius: 25%;
   margin: auto;
+}
+
+.button-active {
+  background: green;
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  transition: 10s;
   animation-direction: normal; // направление анимации
   animation-fill-mode: forwards; // не отматывает анимацию
   animation-timing-function: ease-out; // быстрое начало - медленный конец
-  border: 5px solid orange;
   &:before { // центральный круг
     content: '';
     .absolute;
@@ -124,7 +145,7 @@
     counter-increment: section;
     content: counter(section);
     position: fixed;
-    left: 450%;
+    left: 600%;
     top: 30%;
     transform: rotate(20deg);
     text-shadow: 0 0 10px #fff;
