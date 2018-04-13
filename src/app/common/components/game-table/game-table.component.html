@@ -14,12 +14,12 @@
       </div>
       <div class="table-carousel-main">
         <div class="carousel-block">
-          <ul class="carousel">
+          <ul class="carousel" [ngStyle]="carouselMove">
             <li></li><li></li><li></li><li></li>
             <li></li><li></li><li></li><li></li>
           </ul>
           <div class="carousel-bonus next-button">
-            <button>Крутить</button>
+            <button (click)="carouselMove={transform: 'rotate('+randomNumber()+'deg)'}">Крутить</button>
           </div>
           <div class="carousel-bonus">Бонус</div>
         </div>

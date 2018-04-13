@@ -44,7 +44,6 @@
   align-items: center;
   justify-content: center;
   width: inherit;
-  text-align: center;
   img {
     width: 110px;
     height: 110px;
@@ -81,14 +80,19 @@
   justify-content: center;
   width: 250px;
   height: 250px;
+  min-width: 250px;
+  min-height: 250px;
+  max-width: 250px;
+  max-height: 250px;
   list-style: none;
+  transition: 10s;
   overflow: hidden;
   border-radius: 100%;
   margin: auto;
+  animation-direction: normal; // направление анимации
+  animation-fill-mode: forwards; // не отматывает анимацию
+  animation-timing-function: ease-out; // быстрое начало - медленный конец
   border: 5px solid orange;
-  &:hover {
-    animation: carousel 10s ease-out running; // быстро начинается - медленно заканичвается
-  }
   &:before { // центральный круг
     content: '';
     .absolute;
@@ -221,7 +225,7 @@
 /* Карусель */
 @keyframes carousel {
   100% {
-    transform: rotate(360deg);
+    transform: rotate(1440deg);
   }
 }
 /* ------------------------- */
