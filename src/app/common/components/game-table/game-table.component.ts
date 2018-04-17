@@ -31,8 +31,11 @@ export class GameTableComponent implements OnInit {
   /* Рандомное число */
   randomNumber($event) {
     if (!this.root) {
+      let bol = this,
+        result = document.querySelector('.result');
+
+      result.classList.remove('hide'); // Скрываем result
       $event.target.classList.add('button-active');
-      let bol = this;
       bol.root = true;
       setTimeout(function () {
         bol.root = false;
@@ -47,7 +50,8 @@ export class GameTableComponent implements OnInit {
   /* Запишем результат в окно результата */
   getNumberOfChars() {
     let mainCaousel = document.querySelector('.carousel-block'),
-        liCarousel = mainCaousel.getElementsByTagName('li');
+        liCarousel = mainCaousel.getElementsByTagName('li'),
+        result = document.querySelector('.result');
 
     this.bottomTag.bottom = 0; // чистим от результатов
     this.bottomTag.tagIndex = 0; // чистим от результатов
@@ -58,6 +62,7 @@ export class GameTableComponent implements OnInit {
       this.renderTags(bottomTagRender, mainCaousel, letter);
     }
 
+    result.classList.add('hide'); // Открываем result
     console.log('this.bottomTag', this.bottomTag);
   }
 

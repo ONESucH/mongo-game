@@ -28,12 +28,25 @@
             </ul>
           </div>
           <div class="carousel-bonus next-button">
-            <button (click)="carouselMove={transform: 'rotate('+randomNumber($event)+'deg)'}">Крутить карусель</button>
+            <button (click)="carouselMove={transform:'rotate('+randomNumber($event)+'deg)'}">Крутить карусель</button>
           </div>
-          <div class="carousel-bonus">У вас выпало число</div>
+          <div class="carousel-bonus">
+            <!-- bonus -->
+            <p>Здесь будут бонусы</p>
+          </div>
         </div>
         <div class="carousel-result">
-          <span>{{bottomTag.tagIndex}}</span>
+          <h1>Список наград:</h1>
+          <ul>
+            <li>1 -<span>Награда</span></li>
+            <li>2 -<span>Награда</span></li>
+            <li>3 -<span>Награда</span></li>
+            <li>4 -<span>Награда</span></li>
+            <li>5 -<span>Награда</span></li>
+            <li>6 -<span>Награда</span></li>
+            <li>7 -<span>Награда</span></li>
+            <li>8 -<span>Награда</span></li>
+          </ul>
         </div>
       </div>
     </div>
