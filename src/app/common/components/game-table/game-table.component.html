@@ -17,21 +17,29 @@
           <div class="ponter-carousel">
             <div class="pointer"></div> <!-- Указатель -->
             <ul class="carousel" [ngStyle]="carouselMove">
-              <li location="1"></li><li location="2"></li><li location="3"></li><li location="4"></li>
-              <li location="5"></li><li location="6"></li><li location="7"></li><li location="8"></li>
+              <li><span>1</span></li>
+              <li><span>2</span></li>
+              <li><span>3</span></li>
+              <li><span>4</span></li>
+              <li><span>5</span></li>
+              <li><span>6</span></li>
+              <li><span>7</span></li>
+              <li><span>8</span></li>
             </ul>
           </div>
           <div class="carousel-bonus next-button">
             <button (click)="carouselMove={transform: 'rotate('+randomNumber($event)+'deg)'}">Крутить карусель</button>
           </div>
-          <div class="carousel-bonus">Бонус</div>
+          <div class="carousel-bonus">У вас выпало число</div>
         </div>
         <div class="carousel-result">
-          <span>5</span>
+          <span>{{bottomTag.tagIndex}}</span>
         </div>
       </div>
     </div>
-    <div class="result">1-WIN</div>
+    <div class="result">
+      <p>У вас выпало число<span>{{bottomTag.tagIndex}}</span>- поздравляем</p>
+    </div>
   </div>
 </div>
 <app-footer></app-footer>
