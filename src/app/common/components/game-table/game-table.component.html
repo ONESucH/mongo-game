@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div class="app-game-table">
-  <div class="app-table">
+  <form class="app-table">    <!-- Form -->
     <div class="games">
       <div class="user">
         <div class="data-user">
@@ -38,27 +38,20 @@
         <div class="carousel-result">
           <h1>Список наград:</h1>
           <ul class="list-of-awards">
-            <li>1:<span>+800$</span></li>
-            <li>2:<span>+500$</span></li>
-            <li>3:<span>+600$</span></li>
-            <li>4:<span>+400$</span></li>
-            <li>5:<span>+100$</span></li>
-            <li>6:<span>+200$</span></li>
-            <li>7:<span>+700$</span></li>
-            <li>8:<span>+300$</span></li>
+            <li *ngFor="let item of price; let i=index">{{i + 1}}:<span>+{{item}}$</span></li>
           </ul>
         </div>
         <div class="history">
           <h1>История операций</h1>
           <ul class="history-list">
-            <li>+<span>200</span>coints</li>
+            <li *ngFor="let itemHistory of newUserData.awards.reverse()">+<span>{{itemHistory}}</span>coints</li>
           </ul>
         </div>
       </div>
     </div>
     <div class="result">
-      <p>У вас выпало число<span>{{bottomTag.tagIndex}}</span>- поздравляем</p>
+      <p>У вас выпало число<span>{{newUserData.tagIndex}}</span>- поздравляем</p>
     </div>
-  </div>
+  </form>
 </div>
 <app-footer></app-footer>

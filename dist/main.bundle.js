@@ -236,7 +236,7 @@ var FooterComponent = /** @class */ (function () {
 /***/ "./src/app/common/components/game-table/game-table.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\r\n<div class=\"app-game-table\">\r\n  <div class=\"app-table\">\r\n    <div class=\"games\">\r\n      <div class=\"user\">\r\n        <div class=\"data-user\">\r\n          <img src=\"/assets/img/{{userArrData?.img}}\" alt=\"user\">\r\n          <p>Никнейм: {{userArrData?.nik_name}}</p>\r\n          <p>Уровень: {{userArrData?.lvl}}</p>\r\n          <p>Деньги: {{userArrData?.coints}}</p>\r\n          <p>Статус: {{userArrData?.status}}</p>\r\n          <p>Позиция в топе: {{userArrData?.top_position}}</p>\r\n        </div>\r\n      </div>\r\n      <div class=\"table-carousel-main\">\r\n        <div class=\"carousel-block\">\r\n          <div class=\"ponter-carousel\">\r\n            <div class=\"pointer\"></div> <!-- Указатель -->\r\n            <ul class=\"carousel\" [ngStyle]=\"carouselMove\">\r\n              <li><span>1</span></li>\r\n              <li><span>2</span></li>\r\n              <li><span>3</span></li>\r\n              <li><span>4</span></li>\r\n              <li><span>5</span></li>\r\n              <li><span>6</span></li>\r\n              <li><span>7</span></li>\r\n              <li><span>8</span></li>\r\n            </ul>\r\n          </div>\r\n          <div class=\"carousel-bonus next-button\">\r\n            <button (click)=\"carouselMove={transform:'rotate('+randomNumber($event)+'deg)'}\">Крутить карусель</button>\r\n          </div>\r\n          <div class=\"carousel-bonus\">\r\n            <!-- bonus -->\r\n            <p>{{bonus}}</p>\r\n          </div>\r\n        </div>\r\n        <div class=\"carousel-result\">\r\n          <h1>Список наград:</h1>\r\n          <ul class=\"list-of-awards\">\r\n            <li>1:<span>+800$</span></li>\r\n            <li>2:<span>+500$</span></li>\r\n            <li>3:<span>+600$</span></li>\r\n            <li>4:<span>+400$</span></li>\r\n            <li>5:<span>+100$</span></li>\r\n            <li>6:<span>+200$</span></li>\r\n            <li>7:<span>+700$</span></li>\r\n            <li>8:<span>+300$</span></li>\r\n          </ul>\r\n        </div>\r\n        <div class=\"history\">\r\n          <h1>История операций</h1>\r\n          <ul class=\"history-list\">\r\n            <li>+<span>200</span>coints</li>\r\n          </ul>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"result\">\r\n      <p>У вас выпало число<span>{{bottomTag.tagIndex}}</span>- поздравляем</p>\r\n    </div>\r\n  </div>\r\n</div>\r\n<app-footer></app-footer>\r\n"
+module.exports = "<app-header></app-header>\r\n<div class=\"app-game-table\">\r\n  <form class=\"app-table\">    <!-- Form -->\r\n    <div class=\"games\">\r\n      <div class=\"user\">\r\n        <div class=\"data-user\">\r\n          <img src=\"/assets/img/{{userArrData?.img}}\" alt=\"user\">\r\n          <p>Никнейм: {{userArrData?.nik_name}}</p>\r\n          <p>Уровень: {{userArrData?.lvl}}</p>\r\n          <p>Деньги: {{userArrData?.coints}}</p>\r\n          <p>Статус: {{userArrData?.status}}</p>\r\n          <p>Позиция в топе: {{userArrData?.top_position}}</p>\r\n        </div>\r\n      </div>\r\n      <div class=\"table-carousel-main\">\r\n        <div class=\"carousel-block\">\r\n          <div class=\"ponter-carousel\">\r\n            <div class=\"pointer\"></div> <!-- Указатель -->\r\n            <ul class=\"carousel\" [ngStyle]=\"carouselMove\">\r\n              <li><span>1</span></li>\r\n              <li><span>2</span></li>\r\n              <li><span>3</span></li>\r\n              <li><span>4</span></li>\r\n              <li><span>5</span></li>\r\n              <li><span>6</span></li>\r\n              <li><span>7</span></li>\r\n              <li><span>8</span></li>\r\n            </ul>\r\n          </div>\r\n          <div class=\"carousel-bonus next-button\">\r\n            <button (click)=\"carouselMove={transform:'rotate('+randomNumber($event)+'deg)'}\">Крутить карусель</button>\r\n          </div>\r\n          <div class=\"carousel-bonus\">\r\n            <!-- bonus -->\r\n            <p>{{bonus}}</p>\r\n          </div>\r\n        </div>\r\n        <div class=\"carousel-result\">\r\n          <h1>Список наград:</h1>\r\n          <ul class=\"list-of-awards\">\r\n            <li *ngFor=\"let item of price; let i=index\">{{i + 1}}:<span>+{{item}}$</span></li>\r\n          </ul>\r\n        </div>\r\n        <div class=\"history\">\r\n          <h1>История операций</h1>\r\n          <ul class=\"history-list\">\r\n            <li *ngFor=\"let itemHistory of newUserData.awards.reverse()\">+<span>{{itemHistory}}</span>coints</li>\r\n          </ul>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"result\">\r\n      <p>У вас выпало число<span>{{newUserData.tagIndex}}</span>- поздравляем</p>\r\n    </div>\r\n  </form>\r\n</div>\r\n<app-footer></app-footer>\r\n"
 
 /***/ }),
 
@@ -254,6 +254,7 @@ module.exports = "/*\n  Fonts\n  Created on : 29.01.2018\n  Author     : onesuch
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GameTableComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__templateComponents_awards_awards__ = __webpack_require__("./src/app/templateComponents/awards/awards.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -265,14 +266,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var GameTableComponent = /** @class */ (function () {
     function GameTableComponent(http) {
         this.http = http;
         this.counter = 0;
         this.root = false;
-        this.bottomTag = {
+        this.price = __WEBPACK_IMPORTED_MODULE_2__templateComponents_awards_awards__["a" /* default */].price;
+        this.newUserData = {
             bottom: 0,
-            tagIndex: 0
+            tagIndex: 0,
+            awards: [] // Записываем все в массив для рендеринга списка
         };
     }
     GameTableComponent.prototype.ngOnInit = function () {
@@ -303,28 +307,29 @@ var GameTableComponent = /** @class */ (function () {
     /* Запишем результат в окно результата */
     GameTableComponent.prototype.getNumberOfChars = function () {
         var mainCaousel = document.querySelector('.carousel-block'), liCarousel = mainCaousel.getElementsByTagName('li'), result = document.querySelector('.result');
-        this.bottomTag.bottom = 0; // чистим от результатов
-        this.bottomTag.tagIndex = 0; // чистим от результатов
+        this.newUserData.bottom = 0; // чистим от результатов
+        this.newUserData.tagIndex = 0; // чистим от результатов
         // Найдем самый нижний элемент в карусели
         for (var letter = 0; letter < liCarousel.length; letter++) {
-            var bottomTagRender = 0;
-            this.renderTags(bottomTagRender, mainCaousel, letter);
+            var newUserDataRender = 0;
+            this.renderTags(newUserDataRender, mainCaousel, letter);
         }
         result.classList.add('hide'); // Открываем result
         this.reward(); // выбираем li(поле для награды)
-        console.log('this.bottomTag', this.bottomTag);
+        this.history(); // история операций
+        //console.log('this.newUserData', this.newUserData);
     };
     /* Получаем index списка в котором находимся */
     GameTableComponent.prototype.renderTags = function (tagBottom, mainCarousel, counter) {
         var span = mainCarousel.getElementsByTagName('span')[counter], numberBottom = span.getBoundingClientRect().bottom;
-        if (numberBottom > this.bottomTag.bottom) {
-            this.bottomTag.bottom = numberBottom; // Самый нижний тег
-            this.bottomTag.tagIndex = counter + 1; // Получили пойманное поле в барабане
+        if (numberBottom > this.newUserData.bottom) {
+            this.newUserData.bottom = numberBottom; // Самый нижний тег
+            this.newUserData.tagIndex = counter + 1; // Получили пойманное поле в барабане
         }
     };
     /* Анимация для список наград, после получения числа */
     GameTableComponent.prototype.reward = function () {
-        var listOfAwards = document.querySelector('.list-of-awards').getElementsByTagName('li'), li = listOfAwards[this.bottomTag.tagIndex - 1];
+        var listOfAwards = document.querySelector('.list-of-awards').getElementsByTagName('li'), li = listOfAwards[this.newUserData.tagIndex - 1];
         // Удаляем выйгранные награды
         var removeClass = function (tag) {
             tag.classList.remove('active-awards');
@@ -338,6 +343,11 @@ var GameTableComponent = /** @class */ (function () {
             return tag.classList.add('active-awards');
         };
         test(li);
+    };
+    /* Запишем в объект результаты */
+    GameTableComponent.prototype.history = function () {
+        //this.userArrData.coints = Number(priceArr.price[this.newUserData.tagIndex]);
+        this.newUserData.awards.push(__WEBPACK_IMPORTED_MODULE_2__templateComponents_awards_awards__["a" /* default */].price[this.newUserData.tagIndex - 1]);
     };
     GameTableComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -357,7 +367,7 @@ var GameTableComponent = /** @class */ (function () {
 /***/ "./src/app/common/components/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"max-size-window\">\r\n  <div class=\"app-header\">\r\n    <div class=\"logo\">\r\n      <a href=\"/\"><i class=\"fa fa-spinner fa-pulse\"></i>logo</a>\r\n    </div>\r\n    <div class=\"times\">\r\n      <span>{{timer | date: 'h:mm:ss'}}</span>\r\n      <span>{{timer | date: 'dd-MM-yyyy'}}</span>\r\n    </div>\r\n    <div class=\"news\">{{getNew}}</div>\r\n    <div class=\"user-data\">\r\n      <div><i class=\"fa fa-money\" aria-hidden=\"true\"></i><span>{{userArrData?.coints}}</span></div>\r\n      <div class=\"name\"><i class=\"fa fa-user-o\" aria-hidden=\"true\"></i><span>{{userArrData?.nik_name}}</span></div>\r\n      <ul class=\"list-data\">\r\n        <li>Герой: <span>{{userArrData?.hero}}</span></li>\r\n        <li>Статус: <span>{{userArrData?.status}}</span></li>\r\n        <li>Позиция  в топе: <span>{{userArrData?.top_position}}</span></li>\r\n        <li>Уровень: <span>{{userArrData?.lvl}}</span></li>\r\n        <li>Email: <span>{{userArrData?.email}}</span></li>\r\n        <li>{{userArrData?.updated_date}}</li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"max-size-window\">\r\n  <div class=\"app-header\">\r\n    <div class=\"logo\">\r\n      <a href=\"/\"><i class=\"fa fa-spinner fa-pulse\"></i>logo</a>\r\n    </div>\r\n    <div class=\"times\">\r\n      <span>{{timer | date: 'h:mm:ss'}}</span>\r\n      <span>{{timer | date: 'dd-MM-yyyy'}}</span>\r\n    </div>\r\n    <div class=\"news\">{{getNew}}</div>\r\n    <div class=\"user-data\">\r\n      <div><i class=\"fa fa-money\" aria-hidden=\"true\"></i><span>{{userArrData?.coints}}$</span></div>\r\n      <div class=\"name\"><i class=\"fa fa-user-o\" aria-hidden=\"true\"></i><span>{{userArrData?.nik_name}}</span></div>\r\n      <ul class=\"list-data\">\r\n        <li>Герой: <span>{{userArrData?.hero}}</span></li>\r\n        <li>Статус: <span>{{userArrData?.status}}</span></li>\r\n        <li>Позиция  в топе: <span>{{userArrData?.top_position}}</span></li>\r\n        <li>Уровень: <span>{{userArrData?.lvl}}</span></li>\r\n        <li>Email: <span>{{userArrData?.email}}</span></li>\r\n        <li>{{userArrData?.updated_date}}</li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -698,6 +708,17 @@ module.exports = {
     ]
   }
 };
+
+
+/***/ }),
+
+/***/ "./src/app/templateComponents/awards/awards.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+    price: ['800', '500', '600', '400', '100', '200', '700', '300']
+});
 
 
 /***/ }),

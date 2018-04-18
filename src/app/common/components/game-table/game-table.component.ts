@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Http} from '@angular/http';
 
+import priceArr from '../../../templateComponents/awards/awards';
+
 @Component({
   selector: 'app-game-table',
   templateUrl: './game-table.component.html',
@@ -8,12 +10,14 @@ import {Http} from '@angular/http';
 })
 export class GameTableComponent implements OnInit {
 
-  public userArrData: object;
+  public userArrData: object; // полученные данные по API пользователя
   public counter: number = 0;
   private root = false;
-  private bottomTag = {
+  public price = priceArr.price;
+  private newUserData = {
     bottom: 0,
-    tagIndex: 0
+    tagIndex: 0,
+    awards: [] // Записываем все в массив для рендеринга списка
   };
 
   constructor(private http: Http) {}
@@ -37,7 +41,7 @@ export class GameTableComponent implements OnInit {
       result.classList.remove('hide'); // Скрываем result
       $event.target.classList.add('button-active');
       bol.root = true;
-      setTimeout(function () {
+      setTimeout(() => {
         bol.root = false;
         bol.getNumberOfChars();
         $event.target.classList.remove('button-active');
@@ -53,18 +57,19 @@ export class GameTableComponent implements OnInit {
         liCarousel = mainCaousel.getElementsByTagName('li'),
         result = document.querySelector('.result');
 
-    this.bottomTag.bottom = 0; // чистим от результатов
-    this.bottomTag.tagIndex = 0; // чистим от результатов
+    this.newUserData.bottom = 0; // чистим от результатов
+    this.newUserData.tagIndex = 0; // чистим от результатов
 
     // Найдем самый нижний элемент в карусели
     for (let letter = 0; letter < liCarousel.length; letter++) {
-      let bottomTagRender = 0;
-      this.renderTags(bottomTagRender, mainCaousel, letter);
+      let newUserDataRender = 0;
+      this.renderTags(newUserDataRender, mainCaousel, letter);
     }
 
     result.classList.add('hide'); // Открываем result
     this.reward(); // выбираем li(поле для награды)
-    console.log('this.bottomTag', this.bottomTag);
+    this.history(); // история операций
+    //console.log('this.newUserData', this.newUserData);
   }
 
   /* Получаем index списка в котором находимся */
@@ -72,20 +77,19 @@ export class GameTableComponent implements OnInit {
     let span = mainCarousel.getElementsByTagName('span')[counter],
       numberBottom = span.getBoundingClientRect().bottom;
 
-    if (numberBottom > this.bottomTag.bottom) {
-      this.bottomTag.bottom = numberBottom; // Самый нижний тег
-      this.bottomTag.tagIndex = counter + 1; // Получили пойманное поле в барабане
+    if (numberBottom > this.newUserData.bottom) {
+      this.newUserData.bottom = numberBottom; // Самый нижний тег
+      this.newUserData.tagIndex = counter + 1; // Получили пойманное поле в барабане
     }
-
   }
 
   /* Анимация для список наград, после получения числа */
   reward() {
     let listOfAwards = document.querySelector('.list-of-awards').getElementsByTagName('li'),
-      li = listOfAwards[this.bottomTag.tagIndex-1];
+      li = listOfAwards[this.newUserData.tagIndex-1];
 
     // Удаляем выйгранные награды
-    let removeClass = function (tag) {
+    let removeClass = (tag) => {
       tag.classList.remove('active-awards');
     };
 
@@ -100,7 +104,12 @@ export class GameTableComponent implements OnInit {
     };
 
     test(li);
+  }
 
+  /* Запишем в объект результаты */
+  history() {
+    //this.userArrData.coints = Number(priceArr.price[this.newUserData.tagIndex]);
+    this.newUserData.awards.push(priceArr.price[this.newUserData.tagIndex-1]);
   }
 
 }
