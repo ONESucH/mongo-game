@@ -7,9 +7,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url('../../../../assets/img/game-background.png') no-repeat center fixed;
+  background: url('../../../../assets/img/game-background.png') no-repeat top right fixed;
   background-size: cover;
   z-index: -1;
+  overflow: hidden;
 }
 
 .app-table {
@@ -17,7 +18,7 @@
   display: flex;
   flex-flow: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .games {
@@ -26,7 +27,6 @@
   align-items: stretch;
   justify-content: center;
   width: 100%;
-  height: 100%;
 }
 
 .user {
@@ -50,6 +50,7 @@
     border: 1px solid silver;
     border-radius: 6px;
     box-shadow: 0 0 10px #fff;
+    margin-bottom: 15px;
   }
   p {
     width: 100%;
@@ -73,6 +74,7 @@
   align-items: stretch;
   justify-content: space-between;
   flex-grow: 1;
+  padding: 0 50px;
 }
 
 .ponter-carousel {
@@ -105,6 +107,11 @@
 
 .button-active {
   background: green;
+}
+
+.active-awards, .active-awards > span {
+  color: #9aff00 !important;
+  animation: result-number 1s 1.5s infinite ease-in-out !important;
 }
 
 .carousel {
@@ -235,6 +242,33 @@
   }
   li span {
     margin: 0 10px;
+    color: #fff;
+    text-shadow: 0 0 10px #fff;
+    font-size: 20px;
+  }
+  li i {
+    margin: 0 8px;
+    color: #f4d200;
+  }
+}
+
+.history {
+  display: flex;
+  flex-flow: column;
+  flex-grow: 1;
+  h1 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #fff;
+    font-size: 1.5em;
+    padding: 10px 0;
+  }
+}
+
+.history-list {
+  list-style: none;
+  li {
     color: #fff;
     text-shadow: 0 0 10px #fff;
     font-size: 20px;

@@ -23,6 +23,15 @@
   }
 }
 
+.times {
+  display: flex;
+  white-space: nowrap;
+  margin: auto 5px;
+  span {
+    margin: auto 5px;
+  }
+}
+
 .news {
   flex-grow: 1;
   margin: 0 20px;
@@ -66,6 +75,7 @@
   align-items: stretch;
   list-style: none;
   li {
+    position: relative;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -76,8 +86,81 @@
     cursor: pointer;
     white-space: nowrap;
     transition: 1s;
+    background: rgba(0, 0, 0, 0.71);
     &:hover {
       box-shadow: 0 0 50px 1px #037df4;
+      & ~ li:hover:after {
+        display: inline-block;
+      }
     }
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0;
+      height: 0;
+      display: inline-block;
+      background: #09aeff;
+      box-shadow: 0 0 10px 1px #fff;
+      animation: hoverList 8s infinite both linear;
+    }
+  }
+}
+
+@keyframes hoverList {
+  0% {
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 0;
+  }
+  12.5% {
+    top: 50%;
+    left: 0;
+    width: 2px;
+    height: 50%;
+  }
+  25% {
+    top: 100%;
+    left: 0;
+    width: 2px;
+    height: 0;
+  }
+  37.5% {
+    top: 100%;
+    left: 50%;
+    width: 50%;
+    height: 2px;
+  }
+  50% {
+    top: 100%;
+    left: 100%;
+    width: 0;
+    height: 2px;
+  }
+  62.5% {
+    top: 50%;
+    left: 100%;
+    width: 2px;
+    height: 50%;
+  }
+  75% {
+    top: 0;
+    left: 100%;
+    width: 2px;
+    height: 0;
+  }
+  87.5% {
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 2px;
+  }
+  100% {
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
   }
 }

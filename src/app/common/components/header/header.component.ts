@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
 
   public userArrData: object;
   public getNew = appNewsArr[Math.floor(Math.random() * (appNewsArr.length + 1 - 0))];
+  private timer = new Date();
 
   constructor(private http: Http) {}
 

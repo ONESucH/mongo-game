@@ -3,6 +3,10 @@
     <div class="logo">
       <a href="/"><i class="fa fa-spinner fa-pulse"></i>logo</a>
     </div>
+    <div class="times">
+      <span>{{timer | date: 'h:mm:ss'}}</span>
+      <span>{{timer | date: 'dd-MM-yyyy'}}</span>
+    </div>
     <div class="news">{{getNew}}</div>
     <div class="user-data">
       <div><i class="fa fa-money" aria-hidden="true"></i><span>{{userArrData?.coints}}</span></div>

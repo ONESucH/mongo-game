@@ -63,6 +63,7 @@ export class GameTableComponent implements OnInit {
     }
 
     result.classList.add('hide'); // Открываем result
+    this.reward(); // выбираем li(поле для награды)
     console.log('this.bottomTag', this.bottomTag);
   }
 
@@ -75,6 +76,30 @@ export class GameTableComponent implements OnInit {
       this.bottomTag.bottom = numberBottom; // Самый нижний тег
       this.bottomTag.tagIndex = counter + 1; // Получили пойманное поле в барабане
     }
+
+  }
+
+  /* Анимация для список наград, после получения числа */
+  reward() {
+    let listOfAwards = document.querySelector('.list-of-awards').getElementsByTagName('li'),
+      li = listOfAwards[this.bottomTag.tagIndex-1];
+
+    // Удаляем выйгранные награды
+    let removeClass = function (tag) {
+      tag.classList.remove('active-awards');
+    };
+
+    // Находим не нужные классы
+    for (let letter = 0; letter < listOfAwards.length; letter++) {
+      removeClass(listOfAwards[letter]);
+    }
+
+    // Index награды
+    let test = (tag) => {
+      return tag.classList.add('active-awards');
+    };
+
+    test(li);
 
   }
 
