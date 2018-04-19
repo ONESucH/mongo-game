@@ -236,7 +236,7 @@ var FooterComponent = /** @class */ (function () {
 /***/ "./src/app/common/components/game-table/game-table.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\r\n<div class=\"app-game-table\">\r\n  <form class=\"app-table\">    <!-- Form -->\r\n    <div class=\"games\">\r\n      <div class=\"user\">\r\n        <div class=\"data-user\">\r\n          <img src=\"/assets/img/{{userArrData?.img}}\" alt=\"user\">\r\n          <p>Никнейм: {{userArrData?.nik_name}}</p>\r\n          <p>Уровень: {{userArrData?.lvl}}</p>\r\n          <p>Деньги: {{userArrData?.coints}}</p>\r\n          <p>Статус: {{userArrData?.status}}</p>\r\n          <p>Позиция в топе: {{userArrData?.top_position}}</p>\r\n        </div>\r\n      </div>\r\n      <div class=\"table-carousel-main\">\r\n        <div class=\"carousel-block\">\r\n          <div class=\"ponter-carousel\">\r\n            <div class=\"pointer\"></div> <!-- Указатель -->\r\n            <ul class=\"carousel\" [ngStyle]=\"carouselMove\">\r\n              <li><span>1</span></li>\r\n              <li><span>2</span></li>\r\n              <li><span>3</span></li>\r\n              <li><span>4</span></li>\r\n              <li><span>5</span></li>\r\n              <li><span>6</span></li>\r\n              <li><span>7</span></li>\r\n              <li><span>8</span></li>\r\n            </ul>\r\n          </div>\r\n          <div class=\"carousel-bonus next-button\">\r\n            <button (click)=\"carouselMove={transform:'rotate('+randomNumber($event)+'deg)'}\">Крутить карусель</button>\r\n          </div>\r\n          <div class=\"carousel-bonus\">\r\n            <!-- bonus -->\r\n            <p>{{bonus}}</p>\r\n          </div>\r\n        </div>\r\n        <div class=\"carousel-result\">\r\n          <h1>Список наград:</h1>\r\n          <ul class=\"list-of-awards\">\r\n            <li *ngFor=\"let item of price; let i=index\">{{i + 1}}:<span>+{{item}}$</span></li>\r\n          </ul>\r\n        </div>\r\n        <div class=\"history\">\r\n          <h1>История операций</h1>\r\n          <ul class=\"history-list\">\r\n            <li *ngFor=\"let itemHistory of newUserData.awards.reverse()\">+<span>{{itemHistory}}</span>coints</li>\r\n          </ul>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"result\">\r\n      <p>У вас выпало число<span>{{newUserData.tagIndex}}</span>- поздравляем</p>\r\n    </div>\r\n  </form>\r\n</div>\r\n<app-footer></app-footer>\r\n"
+module.exports = "<app-header></app-header>\r\n<div class=\"app-game-table\">\r\n  <div class=\"app-table\">\r\n    <div class=\"games\">\r\n      <div class=\"user\">\r\n        <div class=\"data-user\">\r\n          <img *ngIf=\"userArrData?.img\" src=\"/assets/img/{{userArrData.img}}\" alt=\"user\">\r\n          <p *ngIf=\"userArrData?.nik_name\">Никнейм: {{userArrData.nik_name}}</p>\r\n          <p *ngIf=\"userArrData?.lvl\">Уровень: {{userArrData.lvl}}</p>\r\n          <p *ngIf=\"userArrData?.coints\">Деньги: {{userArrData.coints}}</p>\r\n          <p *ngIf=\"userArrData?.status\">Статус: {{userArrData.status}}</p>\r\n          <p *ngIf=\"userArrData?.top_position\">Позиция в топе: {{userArrData.top_position}}</p>\r\n        </div>\r\n      </div>\r\n      <div class=\"table-carousel-main\">\r\n        <div class=\"carousel-block\">\r\n          <div class=\"ponter-carousel\">\r\n            <div class=\"pointer\"></div> <!-- Указатель -->\r\n            <ul class=\"carousel\" [ngStyle]=\"carouselMove\">\r\n              <li><span>1</span></li><li><span>2</span></li><li><span>3</span></li><li><span>4</span></li><li><span>5</span></li><li><span>6</span></li><li><span>7</span></li><li><span>8</span></li>\r\n            </ul>\r\n          </div>\r\n          <div class=\"carousel-bonus next-button\">\r\n            <button type=\"submit\" (click)=\"carouselMove={transform:'rotate('+randomNumber($event)+'deg)'}\">Крутить карусель</button>\r\n          </div>\r\n          <div class=\"carousel-bonus\">\r\n            <!-- bonus -->\r\n            <p>Здесь будут бонусы</p>\r\n          </div>\r\n        </div>\r\n        <div class=\"carousel-result\">\r\n          <h1>Список наград:</h1>\r\n          <ul class=\"list-of-awards\">\r\n            <li *ngFor=\"let item of dataPrices; let i=index\">{{i + 1}}:<span>+{{item}}$</span></li>\r\n          </ul>\r\n        </div>\r\n        <div class=\"history\">\r\n          <h1>История операций</h1>\r\n          <ul class=\"history-list\">\r\n            <li *ngFor=\"let itemHistory of newUserData.awards.reverse()\">+<span>{{itemHistory}}</span>coints</li>\r\n          </ul>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"result\">\r\n      <p>У вас выпало число<span>{{newUserData.tagIndex}}</span>- поздравляем</p>\r\n    </div>\r\n  </div>\r\n</div>\r\n<app-footer></app-footer>\r\n"
 
 /***/ }),
 
@@ -254,7 +254,8 @@ module.exports = "/*\n  Fonts\n  Created on : 29.01.2018\n  Author     : onesuch
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GameTableComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__templateComponents_awards_awards__ = __webpack_require__("./src/app/templateComponents/awards/awards.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__templateComponents_modalMessage_modalMessage__ = __webpack_require__("./src/app/templateComponents/modalMessage/modalMessage.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__templateComponents_awards_awards__ = __webpack_require__("./src/app/templateComponents/awards/awards.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -267,15 +268,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var GameTableComponent = /** @class */ (function () {
     function GameTableComponent(http) {
         this.http = http;
         this.counter = 0;
         this.root = false;
-        this.price = __WEBPACK_IMPORTED_MODULE_2__templateComponents_awards_awards__["a" /* default */].price;
+        this.dataPrices = __WEBPACK_IMPORTED_MODULE_3__templateComponents_awards_awards__["a" /* default */].price;
         this.newUserData = {
             bottom: 0,
             tagIndex: 0,
+            coints: 0,
             awards: [] // Записываем все в массив для рендеринга списка
         };
     }
@@ -285,7 +288,6 @@ var GameTableComponent = /** @class */ (function () {
             .subscribe(function (req) {
             var json = req.json();
             _this.userArrData = json[0];
-            console.log('this.userArrData', _this.userArrData);
         });
     };
     /* Рандомное число */
@@ -316,8 +318,6 @@ var GameTableComponent = /** @class */ (function () {
         }
         result.classList.add('hide'); // Открываем result
         this.reward(); // выбираем li(поле для награды)
-        this.history(); // история операций
-        //console.log('this.newUserData', this.newUserData);
     };
     /* Получаем index списка в котором находимся */
     GameTableComponent.prototype.renderTags = function (tagBottom, mainCarousel, counter) {
@@ -339,15 +339,22 @@ var GameTableComponent = /** @class */ (function () {
             removeClass(listOfAwards[letter]);
         }
         // Index награды
-        var test = function (tag) {
+        var awards = function (tag) {
             return tag.classList.add('active-awards');
         };
-        test(li);
+        awards(li);
+        /* Запишем в массив результаты истории */
+        this.saveData();
     };
-    /* Запишем в объект результаты */
-    GameTableComponent.prototype.history = function () {
-        //this.userArrData.coints = Number(priceArr.price[this.newUserData.tagIndex]);
-        this.newUserData.awards.push(__WEBPACK_IMPORTED_MODULE_2__templateComponents_awards_awards__["a" /* default */].price[this.newUserData.tagIndex - 1]);
+    /* Запишем результат в mongodb */
+    GameTableComponent.prototype.saveData = function () {
+        this.newUserData.awards.push(__WEBPACK_IMPORTED_MODULE_3__templateComponents_awards_awards__["a" /* default */].price[this.newUserData.tagIndex - 1]); // История операций
+        this.newUserData.coints = this.userArrData.coints + Number(__WEBPACK_IMPORTED_MODULE_3__templateComponents_awards_awards__["a" /* default */].price[this.newUserData.tagIndex - 1]); // Запишем деньги
+        var mergeObjects = Object.assign(this.userArrData, this.newUserData); // Делаем слияние 2-ух объектов (первый объект приоритетней по слиянию данных)
+        this.http.put('/registration/' + mergeObjects._id, mergeObjects).
+            subscribe(function () {
+            __WEBPACK_IMPORTED_MODULE_2__templateComponents_modalMessage_modalMessage__["a" /* default */].modal('Изменения сохранены');
+        });
     };
     GameTableComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -367,7 +374,7 @@ var GameTableComponent = /** @class */ (function () {
 /***/ "./src/app/common/components/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"max-size-window\">\r\n  <div class=\"app-header\">\r\n    <div class=\"logo\">\r\n      <a href=\"/\"><i class=\"fa fa-spinner fa-pulse\"></i>logo</a>\r\n    </div>\r\n    <div class=\"times\">\r\n      <span>{{timer | date: 'h:mm:ss'}}</span>\r\n      <span>{{timer | date: 'dd-MM-yyyy'}}</span>\r\n    </div>\r\n    <div class=\"news\">{{getNew}}</div>\r\n    <div class=\"user-data\">\r\n      <div><i class=\"fa fa-money\" aria-hidden=\"true\"></i><span>{{userArrData?.coints}}$</span></div>\r\n      <div class=\"name\"><i class=\"fa fa-user-o\" aria-hidden=\"true\"></i><span>{{userArrData?.nik_name}}</span></div>\r\n      <ul class=\"list-data\">\r\n        <li>Герой: <span>{{userArrData?.hero}}</span></li>\r\n        <li>Статус: <span>{{userArrData?.status}}</span></li>\r\n        <li>Позиция  в топе: <span>{{userArrData?.top_position}}</span></li>\r\n        <li>Уровень: <span>{{userArrData?.lvl}}</span></li>\r\n        <li>Email: <span>{{userArrData?.email}}</span></li>\r\n        <li>{{userArrData?.updated_date}}</li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"max-size-window\">\r\n  <div class=\"app-header\">\r\n    <div class=\"logo\">\r\n      <a><i class=\"fa fa-spinner fa-pulse\"></i>logo</a>\r\n    </div>\r\n    <div class=\"times\">\r\n      <span>{{timer | date: 'hh:mm:ss'}}</span>\r\n      <span>{{timer | date: 'dd-MM-yyyy'}}</span>\r\n    </div>\r\n    <div class=\"news\">{{getNew}}</div>\r\n    <div class=\"user-data\">\r\n      <div><i class=\"fa fa-money\" aria-hidden=\"true\"></i><span>{{userArrData?.coints}}$</span></div>\r\n      <div class=\"name\"><i class=\"fa fa-user-o\" aria-hidden=\"true\"></i><span>{{userArrData?.nik_name}}</span></div>\r\n      <ul class=\"list-data\">\r\n        <li>Герой: <span>{{userArrData?.hero}}</span></li>\r\n        <li>Статус: <span>{{userArrData?.status}}</span></li>\r\n        <li>Позиция  в топе: <span>{{userArrData?.top_position}}</span></li>\r\n        <li>Уровень: <span>{{userArrData?.lvl}}</span></li>\r\n        <li>Email: <span>{{userArrData?.email}}</span></li>\r\n        <li>{{userArrData?.updated_date}}</li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -532,7 +539,7 @@ var NotFoundComponent = /** @class */ (function () {
 /***/ "./src/app/common/components/registration/registration.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Анимация -->\r\n<div class=\"main\">\r\n  <div class=\"main-model\">\r\n    <div class=\"active-box\"></div>\r\n  </div>\r\n</div>\r\n<!-- Формы -->\r\n<div class=\"app-registartion\">\r\n  <div class=\"panel\"></div>\r\n  <div class=\"max-size-window\">\r\n    <div class=\"registartion-main\">\r\n      <h1>Регистрация</h1>\r\n      <form #form=\"ngForm\" (ngSubmit)=\"registerUsers(form);\">\r\n        <label>Nikname\r\n          <input ngModel type=\"text\" pattern=\"[a-zA-Z0-9]{2,20}\" placeholder=\"Nikname\" name=\"nik_name\" required>\r\n        </label>\r\n        <label>Your name\r\n          <input ngModel type=\"text\" pattern=\"[a-zA-Z0-9]{2,20}\" placeholder=\"Vova\" name=\"your_name\" required>\r\n        </label>\r\n        <label>Email\r\n          <input ngModel type=\"email\" placeholder=\"mail10@mail.ru\" name=\"email\" required>\r\n        </label>\r\n        <label>Password\r\n          <input ngModel type=\"password\" pattern=\"[a-zA-Z0-9]{4,20}\" placeholder=\"******\" name=\"pass\" required>\r\n        </label>\r\n        <label>Confirm password\r\n          <input ngModel type=\"password\" pattern=\"[a-zA-Z0-9]{4,20}\" placeholder=\"******\" name=\"confirm_pass\" required>\r\n        </label>\r\n        <button type=\"submit\">Зарегистрироваться</button>\r\n        <div class=\"forgot-your-password\">\r\n          <a [routerLink]=\"['/']\">Вы зарегистрированы?</a>\r\n        </div>\r\n      </form>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<!-- Анимация -->\r\n<div class=\"main\">\r\n  <div class=\"main-model\">\r\n    <div class=\"active-box\"></div>\r\n  </div>\r\n</div>\r\n<!-- Формы -->\r\n<div class=\"app-registartion\">\r\n  <div class=\"panel\"></div>\r\n  <div class=\"max-size-window\">\r\n    <div class=\"registartion-main\">\r\n      <h1>Регистрация</h1>\r\n      <form #form=\"ngForm\" (submit)=\"registerUsers(form);\">\r\n        <label>Nikname\r\n          <input ngModel type=\"text\" pattern=\"[a-zA-Z0-9]{2,20}\" placeholder=\"Nikname\" name=\"nik_name\" required>\r\n        </label>\r\n        <label>Your name\r\n          <input ngModel type=\"text\" pattern=\"[a-zA-Z0-9]{2,20}\" placeholder=\"Vova\" name=\"your_name\" required>\r\n        </label>\r\n        <label>Email\r\n          <input ngModel type=\"email\" placeholder=\"mail10@mail.ru\" name=\"email\" required>\r\n        </label>\r\n        <label>Password\r\n          <input ngModel type=\"password\" pattern=\"[a-zA-Z0-9]{4,20}\" placeholder=\"******\" name=\"pass\" required>\r\n        </label>\r\n        <label>Confirm password\r\n          <input ngModel type=\"password\" pattern=\"[a-zA-Z0-9]{4,20}\" placeholder=\"******\" name=\"confirm_pass\" required>\r\n        </label>\r\n        <button type=\"submit\">Зарегистрироваться</button>\r\n        <div class=\"forgot-your-password\">\r\n          <a [routerLink]=\"['/']\">Вы зарегистрированы?</a>\r\n        </div>\r\n      </form>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 

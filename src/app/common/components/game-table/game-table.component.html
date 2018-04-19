@@ -1,15 +1,15 @@
 <app-header></app-header>
 <div class="app-game-table">
-  <form class="app-table">    <!-- Form -->
+  <div class="app-table">
     <div class="games">
       <div class="user">
         <div class="data-user">
-          <img src="/assets/img/{{userArrData?.img}}" alt="user">
-          <p>Никнейм: {{userArrData?.nik_name}}</p>
-          <p>Уровень: {{userArrData?.lvl}}</p>
-          <p>Деньги: {{userArrData?.coints}}</p>
-          <p>Статус: {{userArrData?.status}}</p>
-          <p>Позиция в топе: {{userArrData?.top_position}}</p>
+          <img *ngIf="userArrData?.img" src="/assets/img/{{userArrData.img}}" alt="user">
+          <p *ngIf="userArrData?.nik_name">Никнейм: {{userArrData.nik_name}}</p>
+          <p *ngIf="userArrData?.lvl">Уровень: {{userArrData.lvl}}</p>
+          <p *ngIf="userArrData?.coints">Деньги: {{userArrData.coints}}</p>
+          <p *ngIf="userArrData?.status">Статус: {{userArrData.status}}</p>
+          <p *ngIf="userArrData?.top_position">Позиция в топе: {{userArrData.top_position}}</p>
         </div>
       </div>
       <div class="table-carousel-main">
@@ -17,28 +17,21 @@
           <div class="ponter-carousel">
             <div class="pointer"></div> <!-- Указатель -->
             <ul class="carousel" [ngStyle]="carouselMove">
-              <li><span>1</span></li>
-              <li><span>2</span></li>
-              <li><span>3</span></li>
-              <li><span>4</span></li>
-              <li><span>5</span></li>
-              <li><span>6</span></li>
-              <li><span>7</span></li>
-              <li><span>8</span></li>
+              <li><span>1</span></li><li><span>2</span></li><li><span>3</span></li><li><span>4</span></li><li><span>5</span></li><li><span>6</span></li><li><span>7</span></li><li><span>8</span></li>
             </ul>
           </div>
           <div class="carousel-bonus next-button">
-            <button (click)="carouselMove={transform:'rotate('+randomNumber($event)+'deg)'}">Крутить карусель</button>
+            <button type="submit" (click)="carouselMove={transform:'rotate('+randomNumber($event)+'deg)'}">Крутить карусель</button>
           </div>
           <div class="carousel-bonus">
             <!-- bonus -->
-            <p>{{bonus}}</p>
+            <p>Здесь будут бонусы</p>
           </div>
         </div>
         <div class="carousel-result">
           <h1>Список наград:</h1>
           <ul class="list-of-awards">
-            <li *ngFor="let item of price; let i=index">{{i + 1}}:<span>+{{item}}$</span></li>
+            <li *ngFor="let item of dataPrices; let i=index">{{i + 1}}:<span>+{{item}}$</span></li>
           </ul>
         </div>
         <div class="history">
@@ -52,6 +45,6 @@
     <div class="result">
       <p>У вас выпало число<span>{{newUserData.tagIndex}}</span>- поздравляем</p>
     </div>
-  </form>
+  </div>
 </div>
 <app-footer></app-footer>

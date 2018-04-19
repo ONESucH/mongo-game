@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Http} from '@angular/http';
 
+import ModalMessage from '../../../templateComponents/modalMessage/modalMessage';
 import priceArr from '../../../templateComponents/awards/awards';
 
 @Component({
@@ -10,13 +11,14 @@ import priceArr from '../../../templateComponents/awards/awards';
 })
 export class GameTableComponent implements OnInit {
 
-  public userArrData: object; // полученные данные по API пользователя
+  public userArrData; // полученные данные по API пользователя
   public counter: number = 0;
   private root = false;
-  public price = priceArr.price;
+  public dataPrices = priceArr.price;
   private newUserData = {
     bottom: 0,
     tagIndex: 0,
+    coints: 0,
     awards: [] // Записываем все в массив для рендеринга списка
   };
 
@@ -27,8 +29,6 @@ export class GameTableComponent implements OnInit {
       .subscribe((req) => {
         let json = req.json();
         this.userArrData = json[0];
-
-        console.log('this.userArrData', this.userArrData);
       });
   }
 
@@ -68,8 +68,6 @@ export class GameTableComponent implements OnInit {
 
     result.classList.add('hide'); // Открываем result
     this.reward(); // выбираем li(поле для награды)
-    this.history(); // история операций
-    //console.log('this.newUserData', this.newUserData);
   }
 
   /* Получаем index списка в котором находимся */
@@ -99,17 +97,27 @@ export class GameTableComponent implements OnInit {
     }
 
     // Index награды
-    let test = (tag) => {
+    let awards = (tag) => {
       return tag.classList.add('active-awards');
     };
 
-    test(li);
+    awards(li);
+
+    /* Запишем в массив результаты истории */
+    this.saveData();
   }
 
-  /* Запишем в объект результаты */
-  history() {
-    //this.userArrData.coints = Number(priceArr.price[this.newUserData.tagIndex]);
-    this.newUserData.awards.push(priceArr.price[this.newUserData.tagIndex-1]);
-  }
+  /* Запишем результат в mongodb */
+  saveData() {
+    this.newUserData.awards.push(priceArr.price[this.newUserData.tagIndex-1]); // История операций
+    this.newUserData.coints = this.userArrData.coints + Number(priceArr.price[this.newUserData.tagIndex-1]); // Запишем деньги
 
+    let mergeObjects = Object.assign(this.userArrData, this.newUserData); // Делаем слияние 2-ух объектов (первый объект приоритетней по слиянию данных)
+
+    this.http.put('/registration/'+ mergeObjects._id, mergeObjects).
+      subscribe(() => {
+          ModalMessage.modal('Изменения сохранены');
+        }
+      );
+  }
 }

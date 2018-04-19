@@ -3,15 +3,16 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 var registration = require('./src/app/common/routes/registration');
 var app = express();
-var mongoose = require('mongoose');
 
 mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost/mean-angular5', {promiseLibrary: require('bluebird')}).then(function () {
   console.log('connection succesful');
 }).catch(function (err) {
+  console.error('Сервер не запущен');
   console.error(err);
 });
 
@@ -20,8 +21,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended': 'false'}));
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use(['/registrations', '/game-table'], express.static(path.join(__dirname, 'dist'))); // создаётся роутинг для компоненты, по этмой ссылке задается API
-app.use('/registration', registration);
-app.use('/game-table', registration);
+app.use(['/registration', '/game-table'], registration);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
