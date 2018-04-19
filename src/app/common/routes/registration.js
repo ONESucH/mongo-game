@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.get('/:id', function(req, res, next) {
+router.get('/:id', function(req, res, next) { // получить по id
   Registration.findById(req.params.id, function (err, post) {
     if (err) return next(err);
     res.json(post);
@@ -24,14 +24,14 @@ router.post('/', function(req, res, next) {
   });
 });
 
-router.put('/:id', function(req, res, next) {
+router.put('/:id', function(req, res, next) { // поиск по id
   Registration.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);
   });
 });
 
-router.delete('/:id', function(req, res, next) {
+router.delete('/:id', function(req, res, next) { // поиск по id
   Registration.findByIdAndRemove(req.params.id, req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);

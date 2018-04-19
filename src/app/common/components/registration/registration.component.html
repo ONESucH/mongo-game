@@ -10,7 +10,7 @@
   <div class="max-size-window">
     <div class="registartion-main">
       <h1>Регистрация</h1>
-      <form #form="ngForm" (ngSubmit)="registerUsers(form);">
+      <form #form="ngForm" (submit)="registerUsers(form);">
         <label>Nikname
           <input ngModel type="text" pattern="[a-zA-Z0-9]{2,20}" placeholder="Nikname" name="nik_name" required>
         </label>
