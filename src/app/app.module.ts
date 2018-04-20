@@ -2,7 +2,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module'; // Роутинг
-import {FormsModule} from '@angular/forms'; // Форма
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'; // Форма/Динамическое изменение данных
 import {HttpModule} from '@angular/http';
 import {HttpClientModule} from '@angular/common/http'; // Модуль для работы с mongo - http
 
@@ -32,6 +32,7 @@ import {FooterComponent} from './common/components/footer/footer.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     HttpModule
   ],
