@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Http} from '@angular/http';
+import {Subject} from 'rxjs/Subject'; // Обновляет данные в компонентах
 
 import ModalMessage from '../../../templateComponents/modalMessage/modalMessage';
 import priceArr from '../../../templateComponents/awards/awards';
@@ -21,6 +22,8 @@ export class GameTableComponent implements OnInit {
     coints: 0,
     awards: [] // Записываем все в массив для рендеринга списка
   };
+
+  static updateButton = new Subject();
 
   constructor(private http: Http) {}
 
@@ -54,8 +57,8 @@ export class GameTableComponent implements OnInit {
   /* Запишем результат в окно результата */
   getNumberOfChars() {
     let mainCaousel = document.querySelector('.carousel-block'),
-        liCarousel = mainCaousel.getElementsByTagName('li'),
-        result = document.querySelector('.result');
+      liCarousel = mainCaousel.getElementsByTagName('li'),
+      result = document.querySelector('.result');
 
     this.newUserData.bottom = 0; // чистим от результатов
     this.newUserData.tagIndex = 0; // чистим от результатов
@@ -84,7 +87,7 @@ export class GameTableComponent implements OnInit {
   /* Анимация для список наград, после получения числа */
   reward() {
     let listOfAwards = document.querySelector('.list-of-awards').getElementsByTagName('li'),
-      li = listOfAwards[this.newUserData.tagIndex-1];
+      li = listOfAwards[this.newUserData.tagIndex - 1];
 
     // Удаляем выйгранные награды
     let removeClass = (tag) => {
@@ -109,15 +112,15 @@ export class GameTableComponent implements OnInit {
 
   /* Запишем результат в mongodb */
   saveData() {
-    this.newUserData.awards.push(priceArr.price[this.newUserData.tagIndex-1]); // История операций
-    this.newUserData.coints = this.userArrData.coints + Number(priceArr.price[this.newUserData.tagIndex-1]); // Запишем деньги
+    this.newUserData.awards.push(priceArr.price[this.newUserData.tagIndex - 1]); // История операций
+    this.newUserData.coints = this.userArrData.coints + Number(priceArr.price[this.newUserData.tagIndex - 1]); // Запишем деньги
 
     let mergeObjects = Object.assign(this.userArrData, this.newUserData); // Делаем слияние 2-ух объектов (первый объект приоритетней по слиянию данных)
 
-    this.http.put('/registration/'+ mergeObjects._id, mergeObjects).
-      subscribe(() => {
-          ModalMessage.modal('Изменения сохранены');
-        }
-      );
+    this.http.put('/registration/' + mergeObjects._id, mergeObjects).subscribe(() => {
+        ModalMessage.modal('Изменения сохранены');
+        GameTableComponent.updateButton.next();
+      }
+    );
   }
 }
