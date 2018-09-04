@@ -33,7 +33,7 @@ export class RegistrationComponent {
       data.value.status = 'user'; // статус игрока user, vip, admin, moderator
       data.value.lvl = 0; // уровень
       data.value.img = 'default-user.png'; // уровень
-      data.value.top_position = 'false'; // топ позицияd
+      data.value.top_position = 'false'; // топ позиция
       this.http.post('/registration', data.value).subscribe(() => {
         ModalMessage.modal('Вы зарегистировались');
         window.location.href = '/';
@@ -43,5 +43,4 @@ export class RegistrationComponent {
       data.reset();
     }
   }
-
 }

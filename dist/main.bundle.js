@@ -286,9 +286,6 @@ var GameTableComponent = /** @class */ (function () {
         };
     }
     GameTableComponent_1 = GameTableComponent;
-    GameTableComponent.prototype.updateData = function () {
-        GameTableComponent_1.updateButton.next();
-    };
     GameTableComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.http.get('/registration')
@@ -355,13 +352,12 @@ var GameTableComponent = /** @class */ (function () {
     };
     /* Запишем результат в mongodb */
     GameTableComponent.prototype.saveData = function () {
-        var _this = this;
         this.newUserData.awards.push(__WEBPACK_IMPORTED_MODULE_4__templateComponents_awards_awards__["a" /* default */].price[this.newUserData.tagIndex - 1]); // История операций
         this.newUserData.coints = this.userArrData.coints + Number(__WEBPACK_IMPORTED_MODULE_4__templateComponents_awards_awards__["a" /* default */].price[this.newUserData.tagIndex - 1]); // Запишем деньги
         var mergeObjects = Object.assign(this.userArrData, this.newUserData); // Делаем слияние 2-ух объектов (первый объект приоритетней по слиянию данных)
         this.http.put('/registration/' + mergeObjects._id, mergeObjects).subscribe(function () {
             __WEBPACK_IMPORTED_MODULE_3__templateComponents_modalMessage_modalMessage__["a" /* default */].modal('Изменения сохранены');
-            _this.updateData(); // Обновим header данные
+            GameTableComponent_1.updateButton.next();
         });
     };
     GameTableComponent.updateButton = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__["a" /* Subject */]();
@@ -613,7 +609,7 @@ var RegistrationComponent = /** @class */ (function () {
             data.value.status = 'user'; // статус игрока user, vip, admin, moderator
             data.value.lvl = 0; // уровень
             data.value.img = 'default-user.png'; // уровень
-            data.value.top_position = 'false'; // топ позицияd
+            data.value.top_position = 'false'; // топ позиция
             this.http.post('/registration', data.value).subscribe(function () {
                 __WEBPACK_IMPORTED_MODULE_2__templateComponents_modalMessage_modalMessage__["a" /* default */].modal('Вы зарегистировались');
                 window.location.href = '/';

@@ -18,9 +18,9 @@ mongoose.connect('mongodb://localhost/mean-angular5', {promiseLibrary: require('
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({'extended': 'false'}));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'dist')));
-app.use(['/registrations', '/game-table'], express.static(path.join(__dirname, 'dist'))); // создаётся роутинг для компоненты, по этмой ссылке задается API
+app.use(['/registrations', '/game-table'], express.static(path.join(__dirname, 'dist'))); // создаётся роутинг для компоненты, по этой ссылке задается API
 app.use(['/registration', '/game-table'], registration);
 
 // catch 404 and forward to error handler
